@@ -37,7 +37,6 @@ while n < max_terms:
         a = a + n
     seen.add(a)
     n += 1
-    print(a)
     add_to_plot(lasta, a, n)
 
 plt.show()
