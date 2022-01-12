@@ -110,7 +110,7 @@ def main():
     elif magic_number == phi_seq:
         write('phi_sounds.wav', samplerate, data.astype(np.int16))
     else:
-        write('floridaman.wav', samplerate, data.astype(np.int16))
+        write('personal.wav', samplerate, data.astype(np.int16))
 
     
 if __name__=='__main__':
