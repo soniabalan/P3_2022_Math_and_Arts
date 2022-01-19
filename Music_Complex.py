@@ -59,11 +59,10 @@ def get_song_data(music_notes):
             as a string with elements separated by '-'
     Outputs: The concatenated waves as an array
     '''
-    print(music_notes)
     note_freqs = get_piano_notes() 
-    song = [get_wave(note_freqs[note]) for note in music_notes.split('-')]
+    song = [get_wave(note_freqs[music_notes])]
     song = np.concatenate(song)
-    # print(song)
+ 
     return song
 
 def get_chord_data(music_notes):
@@ -74,28 +73,18 @@ def get_chord_data(music_notes):
             as a string with elements separated by '-'
     Outputs: The concatenated and superimposed waves as an array
     '''
-    # print(music_notes)
     chords = get_chords()
-    chords_pr = str(chords[music_notes])
-    # print(chords_pr)
-    # Getting from chords to the notes they are made up of
-    # for name in music_notes.split('-'):
-    #     chords_pr += (str(chords[name])+'-') 
-
-    # chords_pr = chords_pr.split('-')
-    # chords_pr = chords_pr [:-1]
-    
+    chords_pr = str(chords[music_notes])  
 
     # Using the chords expanded into notes to obtain the wave data
     note_freqs = get_piano_notes()
     chord_data = []
     data = sum([get_wave(note_freqs[note]) for note in chords_pr])
     chord_data.append(data)
-    # print(chord_data)
 
     # Concatenation step
     chord_data = np.concatenate(chord_data, axis=0) 
-    # print(chord_data)   
+ 
     return chord_data.astype(np.int16)
 
 def get_song_from_seq(number_sequence):
@@ -109,66 +98,69 @@ def get_song_from_seq(number_sequence):
         melody = a sequence of frequencies that can be played out (array with wave data)
     '''
 
-    music_notes=''
+    #initialize variables
     song=[]
     counter =0
     c_flag=1
+
     for nr in number_sequence:
-        # reset counter
-        if counter == 3:
-            c_flag=1
-            counter=0
+        music_notes=''
+        if nr.isdigit()==True:
 
-        if c_flag == 0: #get single note melody   
-            if nr=='0':
-                music_notes='d'
-            elif nr=='1':
-                music_notes='E'
-            elif nr=='2':
-                music_notes='f'
-            elif nr=='3':
-                music_notes='g'
-            elif nr=='4':
-                music_notes='A'
-            elif nr=='5':
-                music_notes='B'
-            elif nr=='6':
-                music_notes='h'
-            elif nr=='7':
-                music_notes='i'
-            elif nr=='8':
-                music_notes='J'
-            elif nr=='9':
-                music_notes='k'
-            song.append(get_song_data(music_notes))
+            # reset counter
+            if counter == 4:
+                c_flag=1
+                counter=0
 
-        elif c_flag==1: #get chord melody
-            if nr=='0':
-                music_notes='D#m'
-            elif nr=='1':
-                music_notes='E'
-            elif nr=='2':
-                music_notes='F#m'
-            elif nr=='3':
-                music_notes='G#' 
-            elif nr=='4':
-                music_notes='A'
-            elif nr=='5':
-                music_notes='Bm'
-            elif nr=='6':
-                music_notes='C#' 
-            elif nr=='7':
-                music_notes='D#m'
-            elif nr=='8':
-                music_notes='E'
-            elif nr=='9':
-                music_notes='F#m' 
-            song.append(get_chord_data(music_notes))
-            c_flag=0
-    counter += 1
+            if c_flag == 0: #get single note melody   
+                if nr=='0':
+                    music_notes='d'
+                elif nr=='1':
+                    music_notes='E'
+                elif nr=='2':
+                    music_notes='f'
+                elif nr=='3':
+                    music_notes='g'
+                elif nr=='4':
+                    music_notes='A'
+                elif nr=='5':
+                    music_notes='B'
+                elif nr=='6':
+                    music_notes='h'
+                elif nr=='7':
+                    music_notes='i'
+                elif nr=='8':
+                    music_notes='J'
+                elif nr=='9':
+                    music_notes='k'
+                song.append(get_song_data(music_notes))
 
-    print(song)
-    song=np.concatenate(song, axis=0)
+            elif c_flag==1: #get chord melody
+                if nr=='0':
+                    music_notes='D#m'
+                elif nr=='1':
+                    music_notes='E'
+                elif nr=='2':
+                    music_notes='F#m'
+                elif nr=='3':
+                    music_notes='G#' 
+                elif nr=='4':
+                    music_notes='A'
+                elif nr=='5':
+                    music_notes='Bm'
+                elif nr=='6':
+                    music_notes='C#' 
+                elif nr=='7':
+                    music_notes='D#m'
+                elif nr=='8':
+                    music_notes='E'
+                elif nr=='9':
+                    music_notes='F#m' 
+                song.append(get_chord_data(music_notes))
+                c_flag=0
+            counter += 1
+
+    song=np.concatenate(song)
     song = song * (16300/np.max(song)) # Adjusting the Amplitude
     return song
 
@@ -185,7 +177,6 @@ def main():
 
     x = 'fibonacci'
     nr_seq=Sequence[x]
-    # c_flag=0
     data = get_song_from_seq(nr_seq)
     
     write(('music_'+str(x)+'_complex.wav'), samplerate, data.astype(np.int16))
