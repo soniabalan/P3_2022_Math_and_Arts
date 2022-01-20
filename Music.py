@@ -51,6 +51,28 @@ def get_chords():
 
     return chords
 
+def get_key():
+
+    octave = ['C', 'c', 'D', 'd', 'E', 'F', 'f', 'G', 'g', 'A', 'a', 'B', 'H','h','I','i','J','K','k','L','l','M','m','N']
+    Tt = [0, 1, 3, 5, 6, 8, 10, 12, 13, 15] #nr of semitones to be added to the starting note to get each note in the key
+
+    start = 3 # d (1st note in E maj scale assignment)
+    key_notes = {str(i): octave[start+Tt[i]] for i in range(10)}
+    key_chords = {
+        '0':'D#m',
+        '1':'E',
+        '2':'F#m',
+        '3':'G#',
+        '4':'A',
+        '5':'Bm',
+        '6':'C#',
+        '7':'D#m',
+        '8':'E',
+        '9':'F#m'
+    }
+    
+    return key_notes, key_chords
+
 def get_song_data(music_notes):
     '''
     Function to concatenate all the waves (notes)
@@ -105,53 +127,19 @@ def get_song_from_seq(number_sequence, c_flag):
         melody = a sequence of frequencies that can be played out (array with wave data)
     '''
 
+    key_notes, key_chords = get_key()
     music_notes=''
+    
     if c_flag == 0: #get single note melody   
         for nr in number_sequence:
-            if nr=='0':
-                music_notes+='-d'
-            elif nr=='1':
-                music_notes+='-E'
-            elif nr=='2':
-                music_notes+='-f'
-            elif nr=='3':
-                music_notes+='-g'
-            elif nr=='4':
-                music_notes+='-A'
-            elif nr=='5':
-                music_notes+='-B'
-            elif nr=='6':
-                music_notes+='-h'
-            elif nr=='7':
-                music_notes+='-i'
-            elif nr=='8':
-                music_notes+='-J'
-            elif nr=='9':
-                music_notes+='-k'
+            if nr.isdigit() == True:
+                music_notes+= '-'+ key_notes[nr]
         song = get_song_data(music_notes)
 
     else: #get chord melody
         for nr in number_sequence:
-            if nr=='0':
-                 music_notes+='-D#m'
-            elif nr=='1':
-                music_notes+='-E'
-            elif nr=='2':
-                music_notes+='-F#m'
-            elif nr=='3':
-                music_notes+='-G#' 
-            elif nr=='4':
-                music_notes+='-A'
-            elif nr=='5':
-                music_notes+='-Bm'
-            elif nr=='6':
-                music_notes+='-C#' 
-            elif nr=='7':
-                music_notes+='-D#m'
-            elif nr=='8':
-                 music_notes+='-E'
-            elif nr=='9':
-                music_notes+='-F#m' 
+            if nr.isdigit() == True:
+                 music_notes+='-' + key_chords[nr]
         song = get_chord_data(music_notes[1:])
 
     song = song * (16300/np.max(song)) # Adjusting the Amplitude
@@ -169,13 +157,13 @@ def main():
 
     x = 'fibonacci'
     nr_seq=Sequence[x]
-    c_flag=1
+    c_flag=0
     data = get_song_from_seq(nr_seq,c_flag)
     
     if c_flag  == 0:
-        write(('music_'+str(x)+'.wav'), samplerate, data.astype(np.int16))
+        write(('music_'+str(x)+'_20_01.wav'), samplerate, data.astype(np.int16))
     else:
-        write(('music_'+str(x)+'_chords.wav'), samplerate, data.astype(np.int16))
+        write(('music_'+str(x)+'_20_01_chords.wav'), samplerate, data.astype(np.int16))
 
 if __name__=='__main__':
     main()
