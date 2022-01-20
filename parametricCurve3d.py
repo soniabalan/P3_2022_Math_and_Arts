@@ -1,3 +1,5 @@
+#made with ManimCE
+
 from manim import *
 import datetime as date
 
