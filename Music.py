@@ -1,5 +1,6 @@
 # MUSIC WITH PYTHON
 import numpy as np
+import math
 from pprint import pprint
 from scipy.io.wavfile import write
 
@@ -146,24 +147,54 @@ def get_song_from_seq(number_sequence, c_flag):
     return song
 
 def main():
-    Sequence ={
-        'fibonacci': '0-1-1-2-3-5-8-13-21-34-55-89-144-233-377-610-987-1597-2584-4181-6765-10946-17711-28657-46368-75025',
-        'pi': '3.1415926535897932384626433832795028841971693993751',
-        # 2: '-A-B-A-C-A-B-A-D-A-B-A-C-A-B-A-E-A-B-A-C-A-B-A-D-A-B-A-C-A-B-A-F-A-B-A-C-A-B-A-D-A-B-A-C-A-B-A-E-A-B-A-C-A-B-A-D-A-B-A-C-A-B-A',
-        # #abacaba !WON'T WORK ANYMORE
-        'phi': '1.80339887 4989484820 4586834365 6381177203 0917980576',
-        'recaman': '0 1 3 6 2 7 13 20 12 21 11 22 10 23 9'
+    n_iterations = 50
+    '''
+    Fibonacci Sequence Generator
+    '''
+    fibonacci =''
+    c = b = n = 0
+    a = 1
+    while n < n_iterations:
+        fibonacci += str(a)
+        c = b
+        b = a
+        a = b+c
+        
+        n+=1
+
+    '''
+    Pi Sequence Generator
+    '''
+    pi = '{pi:0.{precision}f}'.format(pi=math.pi,precision=n_iterations)
+
+    '''
+    Recaman Sequence Generator
+    '''
+    n = a = 0
+    recaman = ''
+    seen=[]
+    while n < n_iterations:
+        b = a - n
+        if b > 0 and b not in seen:
+            a = b
+        else:
+            a = a + n
+        seen.append(a)
+        recaman += str(a)
+        n += 1
+
+    Sequences ={
+        'fibonacci': fibonacci,
+        'pi': pi,
+        'recaman': recaman
     }
 
-    x = 'fibonacci'
-    nr_seq=Sequence[x]
-    c_flag=0
-    data = get_song_from_seq(nr_seq,c_flag)
-    
-    if c_flag  == 0:
+    for x in Sequences:
+        data = get_song_from_seq(Sequences[x], 0)
         write(('music_'+str(x)+'_20_01.wav'), samplerate, data.astype(np.int16))
-    else:
-        write(('music_'+str(x)+'_20_01_chords.wav'), samplerate, data.astype(np.int16))
+        datac = get_song_from_seq(Sequences[x], 1)
+        write(('music_'+str(x)+'_20_01_chords.wav'), samplerate, datac.astype(np.int16))
+    
 
 if __name__=='__main__':
     main()
