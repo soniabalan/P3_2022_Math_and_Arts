@@ -5,8 +5,9 @@ This repository is part of a 4-week project from the Maastricht Science Programm
 
 <p>
 It contains the following files: <br>
-File 1 - does this (@author) <br>
-File 2 - does that (@author) <br>
+- File 1 - does this (@author) <br>
+- File 2 - does that (@author) <br>
 ...
+ 
 </p>
 We would like to thank our supervisor Lorenzo for giving us the opportunity to be in this project and for the guidance offered.
