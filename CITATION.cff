@@ -8,6 +8,8 @@ type: software
 authors:
   - given-names: Sonia
     family-names: Bălan
+  - given-names: Téo
+    family-names: Hosselet
   - given-names: Braden
     family-names: Lyons
   - given-names: Carolin
@@ -22,7 +24,6 @@ authors:
     family-names: Schoenmakers
   - given-names: Bo
     family-names: 
-  - given-names: Teo
-    family-names: 
+
 version: 1.0.0
 date-released: '2021-01-25'
