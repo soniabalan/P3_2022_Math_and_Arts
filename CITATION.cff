@@ -8,11 +8,21 @@ type: software
 authors:
   - given-names: Sonia
     family-names: Bălan
-  - given-names: Jeremy
-    family-names: Palmerio
   - given-names: Braden
     family-names: Lyons
   - given-names: Carolin
     family-names: Malmendier
+  - given-names: Marissa
+    family-names: Omirou
+  - given-names: Jeremy
+    family-names: Palmerio
+  - given-names: Sofia
+    family-names: Panzeri
+  - given-names: Myrthe
+    family-names: 
+  - given-names: Bo
+    family-names: 
+  - given-names: Teo
+    family-names: 
 version: 1.0.0
 date-released: '2021-01-25'
