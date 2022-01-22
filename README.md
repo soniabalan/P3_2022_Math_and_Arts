@@ -13,7 +13,8 @@ It contains the following files: <br>
  - Recaman Manim - generates an animation of the above illustration (@carororo) <br> </p>
 
 <p>
-Sonia Bălan, Braden Lyons, Carolin Malmendier, Marissa Omirou, Jeremy Palmerio, Sofia Panzeri, Myrthe, Bo, Teo
+by Sonia Bălan, Braden Lyons, Carolin Malmendier, Marissa Omirou, Jeremy Palmerio, Sofia Panzeri, Myrthe, Bo, Teo <br>
+January 2022
 </p>
 <p>
 We would also like to thank our supervisor Lorenzo for giving us the opportunity to be in this project and for the guidance offered.
