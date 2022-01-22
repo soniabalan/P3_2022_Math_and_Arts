@@ -15,7 +15,7 @@ It contains the following files: <br>
 
 <p>
 by Sonia Bălan, Bo Braet, Téo Hosselet, Braden Lyons, Carolin Malmendier, Marissa Omirou, Jeremy Palmerio, Sofia Panzeri, Myrthe Schoenmakers <br>
-January 2022
+- January 2022
 </p>
 <p>
 We would also like to thank our supervisor Lorenzo for giving us the opportunity to be in this project and for the guidance offered.
