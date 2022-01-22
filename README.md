@@ -1,4 +1,5 @@
 # P3_2022_Math_and_Arts
+<div style="text-align: justify">
 <p>
 This repository is part of a 4-week project from the Maastricht Science Programme (Maastricht University) that had the aim of investigating the relationship between mathematics and art and to produce said art starting from various mathematical concepts. You can check the full report of this project at //link//
  </p>
@@ -18,5 +19,5 @@ January 2022
 </p>
 <p>
 We would also like to thank our supervisor Lorenzo for giving us the opportunity to be in this project and for the guidance offered.
-</p>
+</p> </div>
  
