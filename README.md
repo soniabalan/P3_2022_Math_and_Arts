@@ -1,7 +1,9 @@
 # P3_2022_Math_and_Arts
 <div style="text-align: justify">
 <p>
-This repository is part of a 4-week project from the Maastricht Science Programme (Maastricht University) that had the aim of investigating the relationship between mathematics and art and to produce said art starting from various mathematical concepts. You can check the full report of this project at https://docs.google.com/document/d/1aBDQTNJavFiKoHZeId7xPB8PHqHmfuLLCJagzvHS_YM/edit?usp=sharing
+This repository is part of a 4-week project from the Maastricht Science Programme (Maastricht University) that had the aim of investigating the relationship between mathematics and art and to produce said art starting from various mathematical concepts. You can check the full report of this project at the link down below.
+ 
+ [Full Project Report](https://docs.google.com/document/d/1aBDQTNJavFiKoHZeId7xPB8PHqHmfuLLCJagzvHS_YM/edit?usp=sharing) 
 </p>
 
 <p>
